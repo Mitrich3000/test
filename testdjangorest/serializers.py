@@ -35,4 +35,4 @@ class ProductsSerializer(ModelSerializer):
 class PriceSerializer(ModelSerializer):
     class Meta:
         model = Price
-        fields = ('price',)
+        fields = ('organization', 'product', 'price')
