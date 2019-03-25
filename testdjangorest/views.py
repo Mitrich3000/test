@@ -41,12 +41,14 @@ class OrganizationList(APIView):
         serializer = OrganizationSerializer(organization, many=True)
         return Response(serializer.data)
 
+
 # filter by products
 class ProductList(ListAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = ProductFilter
+
 
 # filter by price
 class PriceList(ListAPIView):

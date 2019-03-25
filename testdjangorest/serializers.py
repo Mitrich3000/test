@@ -32,6 +32,7 @@ class ProductsSerializer(ModelSerializer):
         model = Products
         fields = ('name', 'category', 'organization')
 
+
 class PriceSerializer(ModelSerializer):
     class Meta:
         model = Price

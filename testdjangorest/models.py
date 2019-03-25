@@ -55,7 +55,6 @@ class Organization(models.Model):
 class Products(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name="Название")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория")
-    #organization = models.ManyToManyField(Organization)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
