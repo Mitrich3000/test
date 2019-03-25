@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls.base import reverse
 
 
 class District(models.Model):
@@ -47,6 +48,9 @@ class Organization(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('organizations:organization', kwargs={'pk', self.id})
+
 
 class Products(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name="Название")
@@ -62,10 +66,13 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('products:product', kwargs={'pk', self.id})
+
 
 class Price(models.Model):
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    # organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    # product = models.ForeignKey(Products, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
 
     class Meta:
@@ -73,4 +80,4 @@ class Price(models.Model):
         verbose_name_plural = "Цены"
 
     def __str__(self):
-        return f'Цена {self.product} на {self.organization}'
+        return f'{self.price} руб.'
